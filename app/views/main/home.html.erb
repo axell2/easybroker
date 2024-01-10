@@ -1,0 +1,43 @@
+<h1>Consulta de inmuebles en Easy Broker</h1>
+<br>
+<div class="d-flex justify-content-center">
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <%if @page >= 2 %>
+        <li class="page-item">
+          <%= link_to "Prevous", root_path(url:@previous_page),class:"page-link"%>
+        </li>
+      <%end%>
+      <li class="page-item"><%= link_to "#{@page}", root_path(url:@previous_page),class:"page-link"%> </li>
+      <li class="page-item"> <%= link_to "Next", root_path(url: @pagination["next_page"]),class:"page-link"%></li>
+    </ul>
+  </nav>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>name</th>
+      <th>phone</th>
+      <th>email</th>
+      <th>property_id</th>
+      <th>message</th>
+      <th>source</th>
+      <th>happened_at</th> 
+    </tr>
+  </thead>
+  <tbody>
+    <% @contact_requests.each do |request| %>
+      <tr>
+        <td><%= request["id"]%></td>
+        <td><%= request["name"]%></td>
+        <td><%= request["phone"]%></td> 
+        <td><%= request["email"]%></td>
+        <td><%= request["property_id"]%></td>
+        <td><%= request["message"]%></td>
+        <td><%= request["source"]%></td>
+        <td><%= request["happened_at"]%></td>
+      </tr>
+    <%end%>
+  </tbody>
+</table>
